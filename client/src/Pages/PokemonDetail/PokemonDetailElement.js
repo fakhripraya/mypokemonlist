@@ -194,7 +194,7 @@ export const PokemonCardWrapper = styled.div`
     padding: 10px;
 `
 
-export const PokemonCard = styled(Link)`
+export const PokemonCard = styled.div`
     background-color: #D53B47;
     display: flex;
     flex-direction: column;
@@ -283,10 +283,4 @@ export const PokemonButton = styled.button`
     margin-bottom: 50px;
     background-color: rgba(30,30,30,0.9);
     border-radius: 10px;
-
-    &:hover{
-        transform: scale(1.02);
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-    }
 `

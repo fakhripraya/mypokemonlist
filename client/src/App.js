@@ -7,10 +7,9 @@ import {
 } from "@apollo/client";
 import React from 'react';
 import Pokemon from './Pages/Pokemon';
-import "slick-carousel/slick/slick.css";
 import Navbar from './Components/Navbar';
 import MyPokemon from './Pages/MyPokemon';
-import "slick-carousel/slick/slick-theme.css";
+import PokemonDetail from './Pages/PokemonDetail';
 import { onError } from "@apollo/client/link/error";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -24,7 +23,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: "http://localhost:6969/graphql" }),
+  new HttpLink({ uri: "https://graphql-pokeapi.vercel.app/api/graphql" }),
 ]);
 
 const client = new ApolloClient({
@@ -40,6 +39,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Pokemon} />
           <Route path='/me' exact component={MyPokemon} />
+          <Route path='/detail' exact component={PokemonDetail} />
         </Switch>
       </Router>
     </ApolloProvider>

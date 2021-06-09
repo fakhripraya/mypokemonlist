@@ -89,7 +89,7 @@ const Navbar = () => {
                     <NavMenu>
                         {SidebarData.map((item, index) => {
                             return (
-                                <NavItem>
+                                <NavItem key={index}>
                                     <NavLinks to={item.path}>
                                         <span style={{ color: '#fff' }}>{item.title}</span>
                                     </NavLinks>
