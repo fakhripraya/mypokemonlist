@@ -66,6 +66,8 @@ export const NavMenu = styled.ul`
     align-items: center;
     list-style: none;
     text-align: center;
+    justify-content: center;
+    padding: 0px;
 
     @media screen and (max-width: 1260px){
         display: none;

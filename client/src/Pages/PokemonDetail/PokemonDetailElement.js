@@ -13,10 +13,6 @@ export const HeroWrapper = styled.div`
     @media screen and (max-width: 960px) {
         transition: 0.8s all ease;
     }
-
-    @media screen and (max-width: 1260px){
-        height: 500px;
-    }
 `
 
 export const HeroBgWrapper = styled.div`
@@ -38,11 +34,13 @@ export const HeroContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
+    justify-content: center;
 `
 
 export const HeroIcon = styled.img`
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 `
 
 export const HeroH1 = styled.h1`
@@ -81,66 +79,46 @@ export const HeroP = styled.p`
 `
 
 export const HeroButton = styled.button`
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
-    width: auto;
-    height: auto;
-    padding: 20px 50px;
+    height: 70px;
+    width: 145px;
+    padding: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: rgba(30,30,30,0.9);
     border-radius: 10px;
 
-    @media screen and (max-width: 330px){
-        padding: 10px 25px;
-    }
-`
-
-export const HeroSearchWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-`
-
-export const CustomButtonCarouselWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    height: 100%;
-    width: 100%;
-    margin-left: 30px;
-`
-
-export const CustomButtonCarousel = styled(Link)`
-    border-radius: 50px;
-    background: #33c9ff;
-    white-space: nowrap;
-    z-index: 1;
-    padding: 10px 22px;
-    margin: 0 5px;
-    color: #fff;
-    font-size: 20px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-
     &:hover{
-        transform: scale(1.05);
+        transform: scale(1.02);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
+
+    @media screen and (max-width: 330px){
+        height: 60px;
+        width: 95px;
+    }
+`
+
+/*Type Section*/
+
+export const TypeWrapper = styled.li`
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    padding-bottom: 50px;
 `
 
 /*Pokemon SECTION*/
 
-export const PokemonContainer = styled.div`
+export const MoveContainer = styled.div`
     height: auto;
     display: flex;
     flex-direction: column;
@@ -151,26 +129,38 @@ export const PokemonContainer = styled.div`
     padding-bottom: 50px;
 `
 
-export const PokemonWrapper = styled.div`
-    width: 80%;
+export const MoveWrapper = styled.div`
+    width: 100%;
     max-width: 2000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     align-self: center;
     background-color: transparent;
     
 
     @media screen and (max-width: 2000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 1650px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 1450px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 1250px){
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 
-    @media screen and (max-width: 1200px){
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+    @media screen and (max-width: 1000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
     }
 
-    @media screen and (max-width: 1000px){
+    @media screen and (max-width: 858px){
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -183,7 +173,7 @@ export const PokemonWrapper = styled.div`
     }
 `
 
-export const PokemonCardWrapper = styled.div`
+export const MoveCardWrapper = styled.div`
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -194,93 +184,36 @@ export const PokemonCardWrapper = styled.div`
     padding: 10px;
 `
 
-export const PokemonCard = styled.div`
+export const MoveCard = styled.div`
     background-color: #D53B47;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 250px;
+    height: 50px;
+    width: 125px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     border-radius: 10px;
 
-    &:hover{
-        transform: scale(1.02);
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-    }
-
-    @media screen and (max-width: 2000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1200px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 768px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 440px){
-        height: 200px;
-        width: 150px;
+    @media screen and (max-width: 330px){
+        height: 40px;
+        width: 75px;
     }
 `
 
-export const PokemonIcon = styled.img`
-    height: 50%;
-    width: 75%;
-    margin-bottom: 10px;
-`
-
-export const PokemonH1 = styled.h1`
+export const MoveH1 = styled.h1`
     font-size: 2.5rem;
     color: #000;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 
     @media screen and (max-width: 480px){
         font-size: 2rem;
     }
 `
 
-export const PokemonH2Cont = styled.h2`
-    font-size: 1rem;
-    margin-bottom: 64px;
-`
-
-export const PokemonH2 = styled.h2`
-    font-size: 1rem;
+export const MoveH2 = styled.h2`
+    font-size: 14px;
     margin-bottom: 10px;
-`
-
-export const PokemonP = styled.p`
-    font-size: 1rem;
-    text-align: center;
-`
-
-export const PokemonButton = styled.button`
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    width: auto;
-    height: auto;
-    padding: 20px 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: rgba(30,30,30,0.9);
-    border-radius: 10px;
 `

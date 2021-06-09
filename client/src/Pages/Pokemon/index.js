@@ -19,9 +19,6 @@ import {
     PokemonP,
     PokemonButton,
 } from './PokemonElements';
-import {
-    GetMyNewestState,
-} from '../../Redux';
 import { gql, useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
 import { useSelector, useDispatch } from 'react-redux';
@@ -141,7 +138,7 @@ export default function Pokemon() {
                     <PokemonCard to={{
                         pathname: "/detail",
                         state: {
-                            pokemonName: pokemon.name,
+                            pokemon: pokemon,
                             owned: owned,
                         },
                     }}>

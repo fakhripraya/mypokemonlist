@@ -6,33 +6,35 @@ import {
     HeroH1,
     HeroP,
     HeroButton,
-    HeroSearchWrapper,
-    PokemonContainer,
-    PokemonWrapper,
-    PokemonCardWrapper,
-    PokemonCard,
-    PokemonIcon,
-    PokemonH1,
-    PokemonH2Cont,
-    PokemonH2,
-    PokemonP,
-    PokemonButton,
+    MoveContainer,
+    MoveWrapper,
+    MoveCardWrapper,
+    MoveCard,
+    TypeWrapper,
+    MoveH1,
+    MoveH2,
 } from './PokemonDetailElement';
+import { GetMyNewestState } from '../../Redux';
 import { useLocation } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GET_POKEMONS_DETAILS } from '../../GraphQL/Queries';
+import { GET_POKEMON_DETAILS } from '../../GraphQL/Queries';
+import { TypeColors } from '../../Datas/type-color'
+import Modal from '../../Components/Modal'
 
 export default function PokemonDetail() {
 
+    const dispatch = useDispatch()
     const location = useLocation()
-    const { pokemonName, owned } = location.state
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const { pokemon, owned } = location.state
+    const [selectedPokemon, setSelectedPokemon] = useState(null)
+    const [open, setOpen] = useState(false)
+    let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons)
 
-    const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS_DETAILS, {
+    const { loading, error, data, fetchMore } = useQuery(GET_POKEMON_DETAILS, {
         variables: {
-            name: pokemonName
+            name: pokemon.name
         }
     });
 
@@ -48,31 +50,90 @@ export default function PokemonDetail() {
     }, [data]);
 
     if (!loading && selectedPokemon !== null) {
+
+        function GetMoves({ move, index }) {
+
+            return (
+                <MoveCardWrapper key={index}>
+                    <MoveCard >
+                        <MoveH2 style={{ color: 'white', textDecoration: 'none' }}>{move.move.name !== null ? move.move.name.toUpperCase() : ""}</MoveH2>
+                    </MoveCard>
+                </MoveCardWrapper>
+            )
+        }
+
+        function GetTypes({ type, index }) {
+
+            let colorHex;
+
+            TypeColors.forEach((item, index) => {
+                if (type.type.name === item.title)
+                    colorHex = item.color;
+            })
+
+            return (
+                <MoveCardWrapper key={index}>
+                    <MoveCard style={{ backgroundColor: colorHex }} >
+                        <MoveH2 style={{ color: 'white', textDecoration: 'none' }}>{type.type.name !== null ? type.type.name.toUpperCase() : ""}</MoveH2>
+                    </MoveCard>
+                </MoveCardWrapper>
+            )
+        }
+
+        function Modal() {
+            return (
+                <div></div>
+            )
+        }
+
         return (
-            <HeroWrapper>
-                <HeroBgWrapper />
-                <HeroContent>
-                    <HeroIcon alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
-                    <HeroH1>{selectedPokemon.name.toUpperCase()}</HeroH1>
-                    <HeroP>Owned: {owned}</HeroP>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <HeroButton style={{ marginRight: '10px' }} onClick={async () => {
+            <Fragment>
+                <HeroWrapper>
+                    <HeroBgWrapper />
+                    <HeroContent>
+                        <HeroIcon alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
+                        <HeroH1>{selectedPokemon.name.toUpperCase()}</HeroH1>
+                        <TypeWrapper>
+                            {selectedPokemon.types.map((item, index) => {
+                                return (
+                                    <GetTypes type={item} index={index} key={index} />
+                                )
+                            })}
+                        </TypeWrapper>
+                        <HeroP>Owned: {owned}</HeroP>
+                        <HeroButton onClick={async () => {
+
+                            if (Math.random() > 0.5) {
+
+                                setOpen(true)
+                                // myPokemons.push({ pokemon: pokemon, owned: owned + 1 })
+
+                                // dispatch(GetMyNewestState(myPokemons));
+                                // console.log(myPokemons)
+                            }
+                            else {
+                                alert('failed')
+                            }
+
                         }}>
                             <h1 style={{ color: 'white', fontSize: 18 }}>
                                 Catch
-                            </h1>
+                        </h1>
                         </HeroButton>
-                        <HeroButton>
-                            <h1 style={{ color: 'white', fontSize: 18 }}>
-                                Details
-                            </h1>
-                        </HeroButton>
-                    </div>
-
-                    <HeroSearchWrapper>
-                    </HeroSearchWrapper>
-                </HeroContent>
-            </HeroWrapper>
+                    </HeroContent>
+                </HeroWrapper>
+                <MoveContainer>
+                    <MoveH1>Moves</MoveH1>
+                    <MoveWrapper>
+                        {selectedPokemon.moves.map((item, index) => {
+                            return (
+                                <GetMoves move={item} index={index} key={index} />
+                            )
+                        })}
+                    </MoveWrapper>
+                </MoveContainer>
+                <Modal open={open} setOpen={setOpen} Body={<Modal />} />
+            </Fragment>
         )
     }
     else {

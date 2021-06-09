@@ -17,7 +17,7 @@ query pokemons($limit: Int, $offset: Int) {
 }
 `;
 
-export const GET_POKEMONS_DETAILS = gql`
+export const GET_POKEMON_DETAILS = gql`
 query pokemon($name: String!) {
   pokemon(name: $name) {
     id
