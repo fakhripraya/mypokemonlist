@@ -110,7 +110,7 @@ export default function Pokemon() {
 
         // get all my pokemon information
         let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons);
-
+        console.log(myPokemons)
         function LoadingMore() {
             return (
                 <PokemonButton disabled={true}>
@@ -127,7 +127,7 @@ export default function Pokemon() {
 
             if (myPokemons.length !== 0) {
                 myPokemons.forEach((item, index) => {
-                    if (item.name === pokemon.name) {
+                    if (item.pokemon.name === pokemon.name) {
                         owned = item.owned;
                     }
                 })

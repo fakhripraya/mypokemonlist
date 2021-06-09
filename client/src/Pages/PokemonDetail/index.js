@@ -13,6 +13,11 @@ import {
     TypeWrapper,
     MoveH1,
     MoveH2,
+    ModalContainer,
+    ModalImage,
+    ModalTitle,
+    ModalSecondTitle,
+    ModalCloseButton
 } from './PokemonDetailElement';
 import { GetMyNewestState } from '../../Redux';
 import { useLocation } from "react-router-dom";
@@ -30,6 +35,11 @@ export default function PokemonDetail() {
     const { pokemon, owned } = location.state
     const [selectedPokemon, setSelectedPokemon] = useState(null)
     const [open, setOpen] = useState(false)
+    const [catchPoke, setCatchPoke] = useState({
+        name: "",
+        quote: "",
+    })
+
     let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons)
 
     const { loading, error, data, fetchMore } = useQuery(GET_POKEMON_DETAILS, {
@@ -80,10 +90,29 @@ export default function PokemonDetail() {
             )
         }
 
-        function Modal() {
+        const ModalBody = props => {
             return (
-                <div></div>
+                <ModalContainer>
+                    <ModalImage src={'https://pokemon-web-app.web.app/static/media/gotcha.e52aa4c3.png'} />
+                    <ModalTitle>
+                        {catchPoke.name}
+                    </ModalTitle>
+                    <ModalSecondTitle>
+                        {catchPoke.quote}
+                    </ModalSecondTitle>
+                    <ModalCloseButton onClick={() => {
+                        setOpen(false)
+                    }}>
+                        <h3 style={{ color: 'white', fontSize: 18 }}>Okay</h3>
+                    </ModalCloseButton>
+                </ModalContainer>
             )
+        }
+
+        let thisOwned = 0;
+
+        if (myPokemons.length !== 0) {
+            thisOwned = 1;
         }
 
         return (
@@ -100,20 +129,38 @@ export default function PokemonDetail() {
                                 )
                             })}
                         </TypeWrapper>
-                        <HeroP>Owned: {owned}</HeroP>
+                        <HeroP>Owned: {thisOwned}</HeroP>
                         <HeroButton onClick={async () => {
 
                             if (Math.random() > 0.5) {
+                                setCatchPoke({
+                                    name: "Successfully catch " + selectedPokemon.name + "!",
+                                    quote: "Gotta catch em' all boi!"
+                                })
 
-                                setOpen(true)
-                                // myPokemons.push({ pokemon: pokemon, owned: owned + 1 })
+                                if (myPokemons.length !== 0) {
+                                    myPokemons.forEach((item, index) => {
+                                        if (item.pokemon.name === selectedPokemon.name) {
+                                            item.owned++
+                                            return;
+                                        }
+                                    })
+                                } else {
+                                    myPokemons.push({ pokemon: selectedPokemon, owned: owned + 1 })
+                                }
 
-                                // dispatch(GetMyNewestState(myPokemons));
-                                // console.log(myPokemons)
+                                console.log(myPokemons)
+
+                                dispatch(GetMyNewestState(myPokemons))
                             }
                             else {
-                                alert('failed')
+                                setCatchPoke({
+                                    name: "Failed to catch " + selectedPokemon.name + "...",
+                                    quote: "dang It ran away..."
+                                })
                             }
+
+                            setOpen(true)
 
                         }}>
                             <h1 style={{ color: 'white', fontSize: 18 }}>
@@ -132,8 +179,8 @@ export default function PokemonDetail() {
                         })}
                     </MoveWrapper>
                 </MoveContainer>
-                <Modal open={open} setOpen={setOpen} Body={<Modal />} />
-            </Fragment>
+                <Modal open={open} setOpen={setOpen} Body={ModalBody} />
+            </Fragment >
         )
     }
     else {

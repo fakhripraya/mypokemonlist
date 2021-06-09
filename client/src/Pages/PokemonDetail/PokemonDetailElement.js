@@ -217,3 +217,86 @@ export const MoveH2 = styled.h2`
     font-size: 14px;
     margin-bottom: 10px;
 `
+
+/*Modal Section*/
+
+export const ModalContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+`
+
+export const ModalImage = styled.img`
+    height: 200px;
+    width: 200px;
+`
+
+export const ModalTitle = styled.h1`
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 600px){
+        font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 480px){
+        font-size: 1rem;
+    }
+
+    @media screen and (max-width: 300px){
+        font-size: 0.95rem;
+    }
+
+    @media screen and (max-width: 295px){
+        font-size: 0.75rem;
+    }
+`
+
+export const ModalSecondTitle = styled.h2`
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 600px){
+        font-size: 1rem;
+    }
+
+    @media screen and (max-width: 480px){
+        font-size: 0.95rem;
+    }
+
+    @media screen and (max-width: 300px){
+        font-size: 0.75rem;
+    }
+
+    @media screen and (max-width: 280px){
+        font-size: 0.5rem;
+    }
+`
+
+export const ModalCloseButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    height: 70px;
+    width: 145px;
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgba(30,30,30,0.9);
+    border-radius: 10px;
+
+    &:hover{
+        transform: scale(1.02);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 330px){
+        height: 60px;
+        width: 95px;
+    }
+`
