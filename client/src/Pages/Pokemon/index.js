@@ -1,13 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import {
-    HeroWrapper,
-    HeroContent,
-    HeroBgWrapper,
-    HeroIcon,
-    HeroH1,
-    HeroP,
-    HeroButton,
-    HeroSearchWrapper,
     PokemonContainer,
     PokemonWrapper,
     PokemonCardWrapper,
@@ -19,15 +11,14 @@ import {
     PokemonP,
     PokemonButton,
 } from './PokemonElements';
+import { useSelector } from 'react-redux';
 import { gql, useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
-import { useSelector, useDispatch } from 'react-redux';
 
 export default function Pokemon() {
 
-    const dispatch = useDispatch();
+    const offset = 0;
     let [pokemons, setPokemons] = useState([]);
-    const [offset, setOffsets] = useState(0);
     const [offsetNext, setOffsetsNext] = useState(18);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
 

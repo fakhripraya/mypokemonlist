@@ -1,13 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import {
-    HeroWrapper,
-    HeroContent,
-    HeroBgWrapper,
-    HeroIcon,
-    HeroH1,
-    HeroP,
-    HeroButton,
-    HeroSearchWrapper,
     PokemonContainer,
     PokemonWrapper,
     PokemonCardWrapper,
@@ -17,7 +9,6 @@ import {
     PokemonH2Cont,
     PokemonH2,
     PokemonP,
-    PokemonButton,
 } from './MyPokemonElements';
 import { useSelector, useDispatch } from 'react-redux';
 

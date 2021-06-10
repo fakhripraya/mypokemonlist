@@ -18,21 +18,29 @@ import {
     ModalTitle,
     ModalSecondTitle,
     ModalInput,
-    ModalCloseButton
+    ModalCloseButton,
+    PokemonCardWrapper,
+    PokemonCard,
+    PokemonIcon,
+    PokemonContainer,
+    PokemonWrapper,
+    PokemonH2,
+    PokemonH1,
+    PokemonButton,
 } from './PokemonDetailElement';
+import Modal from '../../Components/Modal';
+import Alert from '@material-ui/lab/Alert';
 import { GetMyNewestState } from '../../Redux';
 import { useLocation } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client';
-import React, { useEffect, useState, useRef, Fragment } from 'react';
+import CloseIcon from '@material-ui/icons/Close';
+import Collapse from '@material-ui/core/Collapse';
+import { TypeColors } from '../../Datas/type-color';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { GET_POKEMON_DETAILS } from '../../GraphQL/Queries';
-import { TypeColors } from '../../Datas/type-color';
-import Modal from '../../Components/Modal';
-import Alert from '@material-ui/lab/Alert';
-import IconButton from '@material-ui/core/IconButton';
-import Collapse from '@material-ui/core/Collapse';
-import CloseIcon from '@material-ui/icons/Close';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState, useRef, Fragment } from 'react';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -101,32 +109,38 @@ export default function PokemonDetail() {
             function GetMyPokemons({ pokemon, index }) {
 
                 return (
-                    <MoveCardWrapper key={index}>
-                        <MoveCard >
-                            <MoveH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon !== null ? pokemon.toUpperCase() : ""}</MoveH2>
-                        </MoveCard>
-                    </MoveCardWrapper>
+                    <PokemonCardWrapper key={index}>
+                        <PokemonCard >
+                            <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
+                            <PokemonH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon !== null ? pokemon.toUpperCase() : ""}</PokemonH2>
+                            <PokemonButton >
+                                <h1 style={{ color: 'white', fontSize: 18 }}>
+                                    Release
+                                </h1>
+                            </PokemonButton>
+                        </PokemonCard>
+                    </PokemonCardWrapper>
                 )
             }
 
             if (selected !== null) {
                 return (
-                    <MoveContainer>
-                        <MoveH1>My Bag</MoveH1>
-                        <MoveWrapper>
+                    <PokemonContainer>
+                        <PokemonH1>My Bag</PokemonH1>
+                        <PokemonWrapper>
                             {selected.pokeList.map((item, index) => {
                                 return (
                                     <GetMyPokemons pokemon={item} index={index} key={index} />
                                 )
                             })}
-                        </MoveWrapper>
-                    </MoveContainer>
+                        </PokemonWrapper>
+                    </PokemonContainer>
                 )
             } else {
                 return (
-                    <MoveContainer>
-                        <MoveH1>My Bag</MoveH1>
-                    </MoveContainer>
+                    <PokemonContainer>
+                        <PokemonH1>My Bag</PokemonH1>
+                    </PokemonContainer>
                 )
             }
 
