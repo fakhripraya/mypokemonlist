@@ -9,6 +9,7 @@ import React from 'react';
 import Pokemon from './Pages/Pokemon';
 import Navbar from './Components/Navbar';
 import MyPokemon from './Pages/MyPokemon';
+import { createBrowserHistory } from 'history';
 import PokemonDetail from './Pages/PokemonDetail';
 import { onError } from "@apollo/client/link/error";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -31,10 +32,12 @@ const client = new ApolloClient({
   link: link,
 });
 
+const history = createBrowserHistory();
+
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <Router history={history}>
         <Navbar />
         <Switch>
           <Route path='/' exact component={Pokemon} />

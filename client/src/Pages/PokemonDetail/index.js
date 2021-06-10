@@ -32,6 +32,7 @@ import {
 } from './PokemonDetailElement';
 import Modal from '../../Components/Modal';
 import Alert from '@material-ui/lab/Alert';
+import { useHistory } from "react-router-dom";
 import { GetMyNewestState } from '../../Redux';
 import { useLocation } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client';
@@ -53,10 +54,13 @@ const useStyles = makeStyles(() => ({
 
 export default function PokemonDetail() {
 
+    let history = useHistory();
     const classes = useStyles();
     const dispatch = useDispatch()
     const location = useLocation()
-    const { pokemon, owned } = location.state
+
+    const pokemon = typeof (location.state) !== 'undefined' ? location.state.pokemon : { name: "" }
+    const owned = typeof (location.state) !== 'undefined' ? location.state.owned : 0
     const [selectedPokemon, setSelectedPokemon] = useState(null)
     const [open, setOpen] = useState(false)
     const [open2nd, setOpen2nd] = useState(false)
@@ -85,6 +89,10 @@ export default function PokemonDetail() {
 
         }
     }, [data]);
+
+    if (typeof (location.state) === 'undefined') {
+        history.push("/");
+    }
 
     if (!loading && selectedPokemon !== null) {
 
