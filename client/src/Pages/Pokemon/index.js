@@ -14,7 +14,7 @@ import {
     RotatingLoading,
 } from './PokemonElements';
 import { useSelector } from 'react-redux';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
 import Pikachu from '../../Assets/Images/wkwkwk.png';
 
@@ -43,7 +43,7 @@ export default function Pokemon() {
     }, [data]);
 
     if (loading)
-        return (<RotatingLoadingContainer><RotatingLoading><img src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
 
     if (error) return `Error! ${error.message}`;
 
@@ -54,7 +54,7 @@ export default function Pokemon() {
 
         function LoadingMore() {
             return (
-                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '10%', width: '10%' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
+                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
             );
         }
 

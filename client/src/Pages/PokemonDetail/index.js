@@ -30,12 +30,12 @@ import {
     RotatingLoadingContainer,
     RotatingLoading,
 } from './PokemonDetailElement';
+import { useQuery } from '@apollo/client';
 import Modal from '../../Components/Modal';
 import Alert from '@material-ui/lab/Alert';
 import { useHistory } from "react-router-dom";
 import { GetMyNewestState } from '../../Redux';
 import { useLocation } from "react-router-dom";
-import { gql, useQuery } from '@apollo/client';
 import CloseIcon from '@material-ui/icons/Close';
 import Collapse from '@material-ui/core/Collapse';
 import { TypeColors } from '../../Datas/type-color';
@@ -73,7 +73,7 @@ export default function PokemonDetail() {
 
     let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons)
 
-    const { loading, error, data, fetchMore } = useQuery(GET_POKEMON_DETAILS, {
+    const { loading, error, data } = useQuery(GET_POKEMON_DETAILS, {
         variables: {
             name: pokemon.name
         }
@@ -124,7 +124,49 @@ export default function PokemonDetail() {
                         <PokemonCard >
                             <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
                             <PokemonH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon !== null ? pokemon.toUpperCase() : ""}</PokemonH2>
-                            <PokemonButton >
+                            <PokemonButton onClick={() => {
+
+                                let selectedIndex;
+                                let selectedName;
+
+                                selected.pokeList.map((item, index) => {
+                                    if (item.toUpperCase() === pokemon.toUpperCase()) {
+                                        selectedIndex = index
+                                        selectedName = item
+                                    }
+                                })
+
+                                let isCleared = false;
+                                let parentIndex;
+
+                                myPokemons.forEach((item, index) => {
+                                    if (selectedPokemon.name === item.pokemon.name) {
+                                        item.pokeList.splice(selectedIndex, 1);
+                                        item.owned--;
+                                        setCatchPoke({
+                                            name: "You successfully release" + selectedName,
+                                            quote: "goodbye :')",
+                                            img: "https://pokemon-web-app.web.app/static/media/footprints.187beaa7.png",
+                                            showInput: false
+                                        })
+                                        setOpen(true)
+                                    }
+
+                                    if (item.pokeList.length === 0) {
+                                        isCleared = true
+                                        parentIndex = index
+                                    }
+                                })
+
+                                if (isCleared) {
+                                    myPokemons.splice(parentIndex, 1)
+                                }
+
+                                let newArr = [...myPokemons]
+                                console.log(newArr)
+                                dispatch(GetMyNewestState(newArr))
+
+                            }}>
                                 <h1 style={{ color: 'white', fontSize: 18 }}>
                                     Release
                                 </h1>
@@ -212,11 +254,17 @@ export default function PokemonDetail() {
                             </div>
                             <ModalCloseButton onClick={() => {
 
+                                if (textRef.current.value === "") {
+                                    setOpen2nd(true);
+                                    return;
+                                }
+
                                 let isNew = true;
                                 let isNameValid = true;
+                                let newArr = [...myPokemons]
 
-                                if (myPokemons.length !== 0) {
-                                    myPokemons.forEach((item) => {
+                                if (newArr.length !== 0) {
+                                    newArr.forEach((item) => {
                                         if (item.pokemon.name === selectedPokemon.name) {
                                             item.pokeList.forEach((item) => {
                                                 if (item === textRef.current.value) {
@@ -240,12 +288,11 @@ export default function PokemonDetail() {
                                     }
 
                                     if (isNew)
-                                        myPokemons.push({ pokemon: selectedPokemon, owned: owned + 1, pokeList: [textRef.current.value], img: pokemon.image })
+                                        newArr.push({ pokemon: selectedPokemon, owned: 1, pokeList: [textRef.current.value], img: pokemon.image })
 
                                 } else
-                                    myPokemons.push({ pokemon: selectedPokemon, owned: owned + 1, pokeList: [textRef.current.value], img: pokemon.image })
+                                    newArr.push({ pokemon: selectedPokemon, owned: 1, pokeList: [textRef.current.value], img: pokemon.image })
 
-                                let newArr = [...myPokemons]
                                 dispatch(GetMyNewestState(newArr))
                                 setOpen2nd(false);
                                 setOpen(false)
@@ -351,7 +398,7 @@ export default function PokemonDetail() {
         )
     }
     else {
-        return (<RotatingLoadingContainer><RotatingLoading><img src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
     }
 
 }
