@@ -226,6 +226,7 @@ export const ModalContainer = styled.div`
     justify-content: center;
     align-self: center;
     align-items: center;
+    width: 100%;
 `
 
 export const ModalImage = styled.img`
@@ -274,6 +275,16 @@ export const ModalSecondTitle = styled.h2`
     @media screen and (max-width: 280px){
         font-size: 0.5rem;
     }
+`
+
+export const ModalInput = styled.input`
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 `
 
 export const ModalCloseButton = styled.button`

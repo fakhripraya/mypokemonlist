@@ -30,7 +30,6 @@ export default function Pokemon() {
     const [offset, setOffsets] = useState(0);
     const [offsetNext, setOffsetsNext] = useState(18);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
 
     const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
         variables: {
@@ -52,65 +51,11 @@ export default function Pokemon() {
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
 
-    function SelectedPokemon() {
-        if (selectedPokemon !== null) {
-            return (
-                <HeroWrapper>
-                    <HeroBgWrapper />
-                    <HeroContent>
-                        <HeroIcon alt="a" src={selectedPokemon.pokemon.image} />
-                        <HeroH1>{selectedPokemon.pokemon.name.toUpperCase()}</HeroH1>
-                        <HeroP>Owned: {selectedPokemon.owned}</HeroP>
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <HeroButton style={{ marginRight: '10px' }} onClick={async () => {
-
-                                setIsLoadingMore(true);
-
-                                const { error, data } = await fetchMore({
-                                    variables: {
-                                        offset: offset + offsetNext,
-                                        limit: 18,
-                                    },
-                                });
-
-                                if (error) {
-                                    alert(error.message)
-                                }
-
-                                setIsLoadingMore(false);
-                                setOffsetsNext(offsetNext + 18)
-
-                                let newArray = [...pokemons];
-                                newArray.push(...data.pokemons.results)
-                                setPokemons(newArray)
-                            }}>
-                                <h1 style={{ color: 'white', fontSize: 18 }}>
-                                    Catch
-                                </h1>
-                            </HeroButton>
-                            <HeroButton>
-                                <h1 style={{ color: 'white', fontSize: 18 }}>
-                                    Details
-                                </h1>
-                            </HeroButton>
-                        </div>
-
-                        <HeroSearchWrapper>
-                        </HeroSearchWrapper>
-                    </HeroContent>
-                </HeroWrapper>
-            )
-        } else {
-            return null
-        }
-
-    }
-
     function PokemonList() {
 
         // get all my pokemon information
         let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons);
-        console.log(myPokemons)
+
         function LoadingMore() {
             return (
                 <PokemonButton disabled={true}>
@@ -178,12 +123,6 @@ export default function Pokemon() {
                                 setIsLoadingMore(false);
                                 setOffsetsNext(offsetNext + 18)
 
-                                console.log(loading)
-                                console.log(error)
-                                console.log(data)
-                                console.log(pokemons)
-                                console.log(data.pokemons.results)
-
                                 let newArray = [...pokemons];
                                 newArray.push(...data.pokemons.results)
                                 setPokemons(newArray)
@@ -201,7 +140,6 @@ export default function Pokemon() {
 
     return (
         <Fragment>
-            <SelectedPokemon />
             <PokemonList />
         </Fragment>
     )

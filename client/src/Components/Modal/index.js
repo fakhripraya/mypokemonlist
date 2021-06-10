@@ -11,10 +11,10 @@ import Alert from '@material-ui/lab/Alert';
 export default function index({ open, setOpen, Body }) {
 
     return (
-        <Dialog disableEscapeKeyDown open={open} onClose={() => { setOpen(false) }} aria-labelledby="form-dialog-title">
-            <DialogContent>
-                <Body />
-            </DialogContent>
+        <Dialog maxWidth="md" fullWidth={true} disableBackdropClick disableEscapeKeyDown open={open} onClose={() => { setOpen(false) }} aria-labelledby="form-dialog-title">
+
+            <Body />
+
         </Dialog>
     )
 }
