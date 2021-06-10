@@ -1,10 +1,24 @@
-import { combineReducers, createStore } from 'redux'
-import MyPokemonReducer from './MyPokemon/reducers'
+import { createStore } from 'redux';
+import storage from 'redux-persist/es/storage';
+import MyPokemonReducer from './MyPokemon/reducers';
+import { persistStore, persistCombineReducers } from 'redux-persist';
 
-const rootReducer = combineReducers({
+const config = {
+    key: "primary",
+    storage
+}
+
+const rootReducer = {
     MyPokemonReducer,
-})
+}
 
-const store = createStore(rootReducer);
+let persistedReducer = persistCombineReducers(config, rootReducer);
 
-export default store;
+export default () => {
+    let store = createStore(persistedReducer);
+    let persistor = persistStore(store);
+    return {
+        store,
+        persistor
+    }
+}

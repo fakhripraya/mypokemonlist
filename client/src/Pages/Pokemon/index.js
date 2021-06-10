@@ -10,10 +10,13 @@ import {
     PokemonH2,
     PokemonP,
     PokemonButton,
+    RotatingLoadingContainer,
+    RotatingLoading,
 } from './PokemonElements';
 import { useSelector } from 'react-redux';
 import { gql, useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
+import Pikachu from '../../Assets/Images/wkwkwk.png';
 
 export default function Pokemon() {
 
@@ -39,7 +42,9 @@ export default function Pokemon() {
         }
     }, [data]);
 
-    if (loading) return 'Loading...';
+    if (loading)
+        return (<RotatingLoadingContainer><RotatingLoading><img src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+
     if (error) return `Error! ${error.message}`;
 
     function PokemonList() {
@@ -49,11 +54,7 @@ export default function Pokemon() {
 
         function LoadingMore() {
             return (
-                <PokemonButton disabled={true}>
-                    <h1 style={{ color: 'white', fontSize: 18 }}>
-                        Loading...
-                    </h1>
-                </PokemonButton>
+                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '10%', width: '10%' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
             );
         }
 

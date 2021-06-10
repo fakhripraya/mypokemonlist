@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 
@@ -473,3 +474,31 @@ export const PokemonButton = styled.button`
         cursor: pointer;
     }
 `
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const RotatingLoadingContainer = styled.div`
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-left: auto;
+    padding-right: auto;
+    justify-content: center;
+    align-items:center;
+`
+
+export const RotatingLoading = styled.div`
+    display: block;
+    animation: ${rotate} 2s linear infinite;
+    padding: 2rem 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+`;
