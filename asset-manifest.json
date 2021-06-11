@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mypokemonlist/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/mypokemonlist/static/js/main.575c0ac5.chunk.js",
+    "main.js.map": "/mypokemonlist/static/js/main.575c0ac5.chunk.js.map",
+    "runtime-main.js": "/mypokemonlist/static/js/runtime-main.f2fd803d.js",
+    "runtime-main.js.map": "/mypokemonlist/static/js/runtime-main.f2fd803d.js.map",
+    "static/js/2.75f7f31c.chunk.js": "/mypokemonlist/static/js/2.75f7f31c.chunk.js",
+    "static/js/2.75f7f31c.chunk.js.map": "/mypokemonlist/static/js/2.75f7f31c.chunk.js.map",
+    "index.html": "/mypokemonlist/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/mypokemonlist/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.75f7f31c.chunk.js.LICENSE.txt": "/mypokemonlist/static/js/2.75f7f31c.chunk.js.LICENSE.txt",
+    "static/media/iconfinder_1543558_game_pokeball_pokemon_pokemon go_pokemongo_icon.d67defe6.svg": "/mypokemonlist/static/media/iconfinder_1543558_game_pokeball_pokemon_pokemon go_pokemongo_icon.d67defe6.svg",
+    "static/media/iconfinder_1543570_game_pokeball_pokemon_pokemon go_pokemongo_icon.cd0d5acd.svg": "/mypokemonlist/static/media/iconfinder_1543570_game_pokeball_pokemon_pokemon go_pokemongo_icon.cd0d5acd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f2fd803d.js",
+    "static/js/2.75f7f31c.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.575c0ac5.chunk.js"
+  ]
+}
