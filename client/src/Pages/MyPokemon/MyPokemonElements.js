@@ -19,32 +19,33 @@ export const PokemonWrapper = styled.div`
     max-width: 2000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     align-self: center;
+    grid-template-columns: 1fr;
     background-color: transparent;
     
-
-    @media screen and (max-width: 2000px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1200px){
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1000px){
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 768px){
+    @media screen and (min-width: 440px){
         grid-template-columns: 1fr 1fr;
     }
-
-    @media screen and (max-width: 440px){
-        grid-template-columns: 1fr;
+    
+    @media screen and (min-width: 768px){
+        grid-template-columns: 1fr 1fr 1fr;
     }
-`
+    
+    // desktop
+    @media screen and (min-width: 1000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 1200px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    // wide screen
+    @media screen and (min-width: 2000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    `
 
 export const PokemonCardWrapper = styled.div`
     background-color: transparent;
@@ -63,42 +64,22 @@ export const PokemonCard = styled(Link)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 250px;
+    height: 200px;
+    width: 150px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     border-radius: 10px;
-
+    
     &:hover{
         transform: scale(1.02);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
-
-    @media screen and (max-width: 2000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1200px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 768px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 440px){
-        height: 200px;
-        width: 150px;
+    
+    @media screen and (min-width: 2000px){
+        height: 300px;
+        width: 250px;
     }
 `
 
@@ -109,12 +90,12 @@ export const PokemonIcon = styled.img`
 `
 
 export const PokemonH1 = styled.h1`
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #000;
     margin-bottom: 10px;
-
-    @media screen and (max-width: 480px){
-        font-size: 2rem;
+    
+    @media screen and (min-width: 480px){
+        font-size: 2.5rem;
     }
 `
 

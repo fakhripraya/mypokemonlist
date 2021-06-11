@@ -46,36 +46,34 @@ export const HeroIcon = styled.img`
 
 export const HeroH1 = styled.h1`
     color: #202020;
-    font-size: 48px;
     font-weight: bold;
     text-align: center;
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 5px;
+    font-size: 32px;
 
-    @media screen and (max-width: 768px){
+    @media screen and (min-width: 480px){
         font-size: 40px;
     }
 
-    @media screen and (max-width: 480px){
-        font-size: 32px;
+    // if screen is desktop size
+    @media screen and (min-width: 768px){
+        font-size: 48px;
     }
+
 `
 
 export const HeroP = styled.p`
     margin-bottom: 10px;
     color: #202020;
-    font-size: 24px;
     text-align: center;
     justify-content: center;
     max-width: 600px;
-
-    @media screen and (max-width: 768px){
+    font-size: 18px;
+    
+    @media screen and (min-width: 480px){
         font-size: 24px;
-    }
-
-    @media screen and (max-width: 480px){
-        font-size: 18px;
     }
 `
 
@@ -84,8 +82,8 @@ export const HeroButton = styled.button`
     justify-content: center;
     align-items: center;
     align-self: center;
-    height: 70px;
-    width: 145px;
+    height: 60px;
+    width: 95px;
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -98,9 +96,10 @@ export const HeroButton = styled.button`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 330px){
-        height: 60px;
-        width: 95px;
+    // if screen is wider than standard mobile phone screen
+    @media screen and (min-width: 330px){
+        height: 70px;
+        width: 145px;
     }
 `
 
@@ -128,52 +127,54 @@ export const MoveContainer = styled.div`
     align-self: center;
     width: 100%;
     padding-bottom: 50px;
-`
+    `
 
 export const MoveWrapper = styled.div`
     width: 100%;
     max-width: 2000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     align-self: center;
+    grid-template-columns: 1fr;
     background-color: transparent;
     
-
-    @media screen and (max-width: 2000px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    @media screen and (min-width: 200px){
+        grid-template-columns: 1fr 1fr;
     }
-
-    @media screen and (max-width: 1650px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    //* mobile *//
+    @media screen and (min-width: 768px){
+        grid-template-columns: 1fr 1fr 1fr;
     }
-
-    @media screen and (max-width: 1450px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1250px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1000px){
+    
+    @media screen and (min-width: 858px){
         grid-template-columns: 1fr 1fr 1fr 1fr ;
     }
 
-    @media screen and (max-width: 858px){
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 768px){
-        grid-template-columns: 1fr 1fr;
-    }
-
-    @media screen and (max-width: 200px){
-        grid-template-columns: 1fr;
+    @media screen and (min-width: 1000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
     
-`
+    //* below wide screen *//
+    @media screen and (min-width: 1250px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 1450px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 1650px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    //* if wide screen *//
+    @media screen and (min-width: 2000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    `
 
 export const MoveCardWrapper = styled.div`
     background-color: transparent;
@@ -192,31 +193,31 @@ export const MoveCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 125px;
+    height: 20px;
+    width: 60px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     border-radius: 10px;
-
-    @media screen and (max-width: 330px){
+    
+    @media screen and (min-width: 240px){
         height: 40px;
         width: 75px;
     }
     
-    @media screen and (max-width: 240px){
-        height: 20px;
-        width: 60px;
+    @media screen and (min-width: 330px){
+        height: 50px;
+        width: 125px;
     }
 `
 
 export const MoveH1 = styled.h1`
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #000;
     margin-bottom: 25px;
-
-    @media screen and (max-width: 480px){
-        font-size: 2rem;
+    
+    @media screen and (min-width: 480px){
+        font-size: 2.5rem;
     }
 `
 
@@ -242,47 +243,47 @@ export const ModalImage = styled.img`
 `
 
 export const ModalTitle = styled.h1`
-    font-size: 2rem;
     color: #000;
+    font-size: 0.75rem;
     margin-bottom: 25px;
+    
+    @media screen and (min-width: 295px){
+        font-size: 0.95rem;
+    }
 
-    @media screen and (max-width: 600px){
+    @media screen and (min-width: 300px){
+        font-size: 1rem;
+    }
+    
+    @media screen and (min-width: 480px){
         font-size: 1.5rem;
     }
-
-    @media screen and (max-width: 480px){
-        font-size: 1rem;
+    
+    @media screen and (min-width: 600px){
+        font-size: 2rem;
     }
-
-    @media screen and (max-width: 300px){
-        font-size: 0.95rem;
-    }
-
-    @media screen and (max-width: 295px){
-        font-size: 0.75rem;
-    }
-`
+    `
 
 export const ModalSecondTitle = styled.h2`
-    font-size: 1.5rem;
+    font-size: 0.5rem;
     margin-bottom: 10px;
-
-    @media screen and (max-width: 600px){
-        font-size: 1rem;
-    }
-
-    @media screen and (max-width: 480px){
-        font-size: 0.95rem;
-    }
-
-    @media screen and (max-width: 300px){
+    
+    @media screen and (min-width: 280px){
         font-size: 0.75rem;
     }
 
-    @media screen and (max-width: 280px){
-        font-size: 0.5rem;
+    @media screen and (min-width: 300px){
+        font-size: 0.95rem;
     }
-`
+    
+    @media screen and (min-width: 480px){
+        font-size: 1rem;
+    }
+
+    @media screen and (min-width: 600px){
+        font-size: 1.5rem;
+    }
+    `
 
 export const ModalInput = styled.input`
   width: 50%;
@@ -299,8 +300,8 @@ export const ModalCloseButton = styled.button`
     justify-content: center;
     align-items: center;
     align-self: center;
-    height: 70px;
-    width: 145px;
+    height: 60px;
+    width: 95px;
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -313,9 +314,9 @@ export const ModalCloseButton = styled.button`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 330px){
-        height: 60px;
-        width: 95px;
+    @media screen and (min-width: 330px){
+        height: 70px;
+        width: 145px;
     }
 `
 
@@ -328,51 +329,51 @@ export const PokemonContainer = styled.div`
     align-self: center;
     width: 100%;
     padding-bottom: 50px;
-`
+    `
 
 export const PokemonWrapper = styled.div`
     width: 100%;
     max-width: 2000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     align-self: center;
+    grid-template-columns: 1fr;
     background-color: transparent;
     
-
-    @media screen and (max-width: 2000px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1650px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1450px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1250px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 1000px){
-        grid-template-columns: 1fr 1fr 1fr 1fr ;
-    }
-
-    @media screen and (max-width: 858px){
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @media screen and (max-width: 768px){
+    @media screen and (min-width: 440px){
         grid-template-columns: 1fr 1fr;
     }
-
-    @media screen and (max-width: 440px){
-        grid-template-columns: 1fr;
+    
+    @media screen and (min-width: 768px){
+        grid-template-columns: 1fr 1fr 1fr;
     }
-`
+    
+    @media screen and (min-width: 858px){
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+    }
+    
+    @media screen and (min-width: 1000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 1250px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    
+    @media screen and (min-width: 1450px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 1650px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    @media screen and (min-width: 2000px){
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    `
 
 export const PokemonCardWrapper = styled.div`
     background-color: transparent;
@@ -391,8 +392,8 @@ export const PokemonCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 250px;
+    height: 200px;
+    width: 150px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
@@ -404,29 +405,9 @@ export const PokemonCard = styled.div`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 2000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1200px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 1000px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 768px){
-        height: 200px;
-        width: 150px;
-    }
-
-    @media screen and (max-width: 440px){
-        height: 200px;
-        width: 150px;
+    @media screen and (min-width: 2000px){
+        height: 300px;
+        width: 250px;
     }
 `
 
@@ -437,12 +418,12 @@ export const PokemonIcon = styled.img`
 `
 
 export const PokemonH1 = styled.h1`
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #000;
     margin-bottom: 10px;
-
-    @media screen and (max-width: 480px){
-        font-size: 2rem;
+    
+    @media screen and (min-width: 480px){
+        font-size: 2.5rem;
     }
 `
 
