@@ -12,7 +12,7 @@ import MyPokemon from './Pages/MyPokemon';
 import { createBrowserHistory } from 'history';
 import PokemonDetail from './Pages/PokemonDetail';
 import { onError } from "@apollo/client/link/error";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
