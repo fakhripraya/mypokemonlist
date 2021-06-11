@@ -45,6 +45,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { GET_POKEMON_DETAILS } from '../../GraphQL/Queries';
 import React, { useEffect, useState, useRef, Fragment } from 'react';
+import { getOwnedFromArray, getTypeColorFromArray } from '../../Function/array';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -83,9 +84,6 @@ export default function PokemonDetail() {
             setSelectedPokemon(data.pokemon)
         }
 
-        return () => {
-
-        }
     }, [data, loading, error]);
 
     if (typeof (location.state) === 'undefined') {
@@ -161,7 +159,6 @@ export default function PokemonDetail() {
                                 }
 
                                 let newArr = [...myPokemons]
-                                console.log(newArr)
                                 dispatch(GetMyNewestState(newArr))
 
                             }}>
@@ -204,12 +201,7 @@ export default function PokemonDetail() {
 
         function GetTypes({ type, index }) {
 
-            let colorHex;
-
-            TypeColors.forEach((item, index) => {
-                if (type.type.name === item.title)
-                    colorHex = item.color;
-            })
+            let colorHex = getTypeColorFromArray(TypeColors, type);
 
             return (
                 <MoveCardWrapper key={index}>
@@ -327,15 +319,7 @@ export default function PokemonDetail() {
             )
         }
 
-        let thisOwned = 0;
-
-        if (myPokemons.length !== 0) {
-            myPokemons.forEach((item, index) => {
-                if (item.pokemon.name === selectedPokemon.name) {
-                    thisOwned = item.owned;
-                }
-            })
-        }
+        let thisOwned = getOwnedFromArray(myPokemons, selectedPokemon);
 
         return (
             <Fragment>

@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
 import Pikachu from '../../Assets/Images/wkwkwk.png';
+import { getOwnedFromArray } from '../../Function/array';
 
 export default function Pokemon() {
 
@@ -37,9 +38,6 @@ export default function Pokemon() {
         if (!loading && !error)
             setPokemons(data.pokemons.results);
 
-        return () => {
-
-        }
     }, [data, loading, error]);
 
     if (loading)
@@ -60,15 +58,7 @@ export default function Pokemon() {
 
         function GetOwnedPokemon({ pokemon, index }) {
 
-            let owned = 0;
-
-            if (myPokemons.length !== 0) {
-                myPokemons.forEach((item, index) => {
-                    if (item.pokemon.name === pokemon.name) {
-                        owned = item.owned;
-                    }
-                })
-            }
+            let owned = getOwnedFromArray(myPokemons, pokemon);
 
             return (
                 <PokemonCardWrapper key={index}>
