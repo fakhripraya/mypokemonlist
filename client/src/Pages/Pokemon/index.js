@@ -12,13 +12,16 @@ import {
     PokemonButton,
     RotatingLoadingContainer,
     RotatingLoading,
-    ErrorH1
+    ErrorH1,
+    FAButton
 } from './PokemonElements';
+import Fab from '@material-ui/core/Fab';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_POKEMONS } from '../../GraphQL/Queries';
 import Pikachu from '../../Assets/Images/wkwkwk.png';
 import { getOwnedFromArray } from '../../Function/array';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 export default function Pokemon() {
 
@@ -26,6 +29,7 @@ export default function Pokemon() {
     let [pokemons, setPokemons] = useState([]);
     const [offsetNext, setOffsetsNext] = useState(18);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const [FADisplay, setFADisplay] = useState(false);
 
     const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
         variables: {
@@ -40,6 +44,16 @@ export default function Pokemon() {
             setPokemons(data.pokemons.results);
 
     }, [data, loading, error]);
+
+    const showFAButton = () => {
+        if (window.scrollY >= window.innerHeight) {
+            setFADisplay(true)
+        } else {
+            setFADisplay(false)
+        }
+    }
+
+    window.addEventListener('scroll', showFAButton);
 
     if (loading)
         return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
@@ -79,6 +93,13 @@ export default function Pokemon() {
 
         return (
             <Fragment>
+                <FAButton showfa={FADisplay}>
+                    <Fab color="secondary" aria-label="add" onClick={() => {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                    }}>
+                        <NavigationIcon />
+                    </Fab>
+                </FAButton>
                 <PokemonContainer>
                     <PokemonH1>Pokemon List</PokemonH1>
                     <PokemonH2Cont>Gotta catch ’em all</PokemonH2Cont>

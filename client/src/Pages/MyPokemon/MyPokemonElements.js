@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom'
 
 /*Pokemon SECTION*/
 
+export const FAButton = styled.div`
+    position: fixed;
+    display: ${({ showfa }) => (showfa ? 'flex' : 'none')};
+    width:100%;
+    justify-content: flex-end;
+    margin-left: -20px;
+    transition: 0.8s all ease;
+`
+
 export const PokemonContainer = styled.div`
     height: auto;
     display: flex;

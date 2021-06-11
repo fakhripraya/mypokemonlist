@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
     PokemonContainer,
     PokemonWrapper,
@@ -9,10 +9,25 @@ import {
     PokemonH2Cont,
     PokemonH2,
     PokemonP,
+    FAButton
 } from './MyPokemonElements';
+import Fab from '@material-ui/core/Fab';
 import { useSelector } from 'react-redux';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 export default function MyPokemon() {
+
+    const [FADisplay, setFADisplay] = useState(false);
+
+    const showFAButton = () => {
+        if (window.scrollY >= window.innerHeight) {
+            setFADisplay(true)
+        } else {
+            setFADisplay(false)
+        }
+    }
+
+    window.addEventListener('scroll', showFAButton);
 
     function PokemonList() {
 
@@ -39,6 +54,13 @@ export default function MyPokemon() {
 
         return (
             <Fragment>
+                <FAButton showfa={FADisplay}>
+                    <Fab color="secondary" aria-label="add" onClick={() => {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                    }}>
+                        <NavigationIcon />
+                    </Fab>
+                </FAButton>
                 <PokemonContainer>
                     <PokemonH1>My Pokemon List</PokemonH1>
                     <PokemonH2Cont>Select your favorite pokemon</PokemonH2Cont>

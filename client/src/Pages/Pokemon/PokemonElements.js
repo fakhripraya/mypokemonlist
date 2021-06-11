@@ -2,6 +2,15 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import { keyframes } from '@emotion/react'
 
+export const FAButton = styled.div`
+    position: fixed;
+    display: ${({ showfa }) => (showfa ? 'flex' : 'none')};
+    width:100%;
+    justify-content: flex-end;
+    margin-left: -20px;
+    transition: 0.8s all ease;
+`
+
 export const HeroWrapper = styled.div`
     display: flex;
     justify-content: center;
