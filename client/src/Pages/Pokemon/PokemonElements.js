@@ -150,14 +150,15 @@ export const PokemonContainer = styled.div`
 `
 
 export const PokemonWrapper = styled.div`
-    width: 80%;
-    max-width: 2000px;
+    width: 100%;
     margin: 0 auto;
+    max-width: 2000px;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr;
     align-self: center;
     background-color: transparent;
+    text-align: center;
     
     @media screen and (min-width: 440px){
         grid-template-columns: 1fr 1fr;
@@ -229,7 +230,8 @@ export const PokemonH1 = styled.h1`
     font-size: 2rem;
     color: #000;
     margin-bottom: 10px;
-    
+    text-align: center;
+
     @media screen and (min-width: 480px){
         font-size: 2.5rem;
     }
@@ -238,6 +240,7 @@ export const PokemonH1 = styled.h1`
 export const PokemonH2Cont = styled.h2`
     font-size: 1rem;
     margin-bottom: 64px;
+    text-align: center;
 `
 
 export const PokemonH2 = styled.h2`
@@ -258,16 +261,19 @@ export const PokemonButton = styled.button`
     align-self: center;
     width: auto;
     height: auto;
-    padding: 20px 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding: 5px 15px;
+    margin: 50px auto;
     background-color: rgba(30,30,30,0.9);
     border-radius: 10px;
-
+    
     &:hover{
         transform: scale(1.02);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
+    }
+    
+    @media screen and (min-width: 215px){
+        padding: 20px 50px;
     }
 `
 

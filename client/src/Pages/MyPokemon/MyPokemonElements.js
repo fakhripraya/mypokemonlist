@@ -15,7 +15,7 @@ export const PokemonContainer = styled.div`
 `
 
 export const PokemonWrapper = styled.div`
-    width: 80%;
+    width: 100%;
     max-width: 2000px;
     margin: 0 auto;
     display: grid;
@@ -93,6 +93,7 @@ export const PokemonH1 = styled.h1`
     font-size: 2rem;
     color: #000;
     margin-bottom: 10px;
+    text-align: center;
     
     @media screen and (min-width: 480px){
         font-size: 2.5rem;
@@ -102,11 +103,13 @@ export const PokemonH1 = styled.h1`
 export const PokemonH2Cont = styled.h2`
     font-size: 1rem;
     margin-bottom: 64px;
+    text-align: center;
 `
 
 export const PokemonH2 = styled.h2`
     font-size: 1rem;
     margin-bottom: 10px;
+    text-align: center;
 `
 
 export const PokemonP = styled.p`

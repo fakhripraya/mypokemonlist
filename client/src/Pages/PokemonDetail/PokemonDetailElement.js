@@ -36,6 +36,7 @@ export const HeroContent = styled.div`
     align-items: center;
     align-self: center;
     justify-content: center;
+
 `
 
 export const HeroIcon = styled.img`
@@ -51,6 +52,7 @@ export const HeroH1 = styled.h1`
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 32px;
+    text-align: center;
 
     @media screen and (min-width: 480px){
         font-size: 40px;
@@ -70,6 +72,7 @@ export const HeroP = styled.p`
     justify-content: center;
     max-width: 600px;
     font-size: 18px;
+    text-align: center;
     
     @media screen and (min-width: 480px){
         font-size: 24px;
@@ -214,6 +217,7 @@ export const MoveH1 = styled.h1`
     font-size: 2rem;
     color: #000;
     margin-bottom: 25px;
+    text-align: center;
     
     @media screen and (min-width: 480px){
         font-size: 2.5rem;
@@ -223,6 +227,7 @@ export const MoveH1 = styled.h1`
 export const MoveH2 = styled.h2`
     font-size: 14px;
     margin-bottom: 10px;
+    text-align: center;
 `
 
 /*Modal Section*/
@@ -239,12 +244,14 @@ export const ModalContainer = styled.div`
 export const ModalImage = styled.img`
     height: 200px;
     width: 200px;
+    text-align: center;
 `
 
 export const ModalTitle = styled.h1`
     color: #000;
     font-size: 0.75rem;
     margin-bottom: 25px;
+    text-align: center;
     
     @media screen and (min-width: 295px){
         font-size: 0.95rem;
@@ -266,7 +273,8 @@ export const ModalTitle = styled.h1`
 export const ModalSecondTitle = styled.h2`
     font-size: 0.5rem;
     margin-bottom: 10px;
-    
+    text-align: center;
+
     @media screen and (min-width: 280px){
         font-size: 0.75rem;
     }
@@ -285,7 +293,7 @@ export const ModalSecondTitle = styled.h2`
     `
 
 export const ModalInput = styled.input`
-  width: 50%;
+  width: 80%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -420,6 +428,7 @@ export const PokemonH1 = styled.h1`
     font-size: 2rem;
     color: #000;
     margin-bottom: 10px;
+    text-align: center;
     
     @media screen and (min-width: 480px){
         font-size: 2.5rem;

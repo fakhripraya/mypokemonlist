@@ -141,7 +141,7 @@ export default function PokemonDetail() {
                                         item.pokeList.splice(selectedIndex, 1);
                                         item.owned--;
                                         setCatchPoke({
-                                            name: "You successfully release" + selectedName,
+                                            name: "You successfully release " + selectedName,
                                             quote: "goodbye :')",
                                             img: "https://pokemon-web-app.web.app/static/media/footprints.187beaa7.png",
                                             showInput: false
