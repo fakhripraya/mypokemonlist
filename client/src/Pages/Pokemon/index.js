@@ -12,6 +12,7 @@ import {
     PokemonButton,
     RotatingLoadingContainer,
     RotatingLoading,
+    ErrorH1
 } from './PokemonElements';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
@@ -43,7 +44,7 @@ export default function Pokemon() {
     if (loading)
         return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
 
-    if (error) return `Error! ${error.message}`;
+    if (error) return (<ErrorH1>Error! { error.message}</ErrorH1>);
 
     function PokemonList() {
 

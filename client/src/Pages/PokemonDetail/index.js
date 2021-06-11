@@ -29,6 +29,7 @@ import {
     PokemonButton,
     RotatingLoadingContainer,
     RotatingLoading,
+    ErrorH1
 } from './PokemonDetailElement';
 import { useQuery } from '@apollo/client';
 import Modal from '../../Components/Modal';
@@ -90,7 +91,7 @@ export default function PokemonDetail() {
         history.push("/");
     }
 
-    if (!loading && selectedPokemon !== null) {
+    if (!loading && !error && selectedPokemon !== null) {
 
         let selected = null;
 
@@ -378,6 +379,9 @@ export default function PokemonDetail() {
                 <Modal open={open} setOpen={setOpen} Body={ModalBody} />
             </Fragment >
         )
+    }
+    else if (error) {
+        return (<ErrorH1>Error! {error.message}</ErrorH1>)
     }
     else {
         return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} alt="pika_meme_loading" /></RotatingLoading></RotatingLoadingContainer>);

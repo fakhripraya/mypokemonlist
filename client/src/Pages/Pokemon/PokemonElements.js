@@ -279,7 +279,7 @@ const rotate = keyframes`
   to {
     transform: rotate(360deg);
   }
-`;
+`
 
 export const RotatingLoadingContainer = styled.div`
     width: 100%;
@@ -297,4 +297,24 @@ export const RotatingLoading = styled.div`
     padding: 2rem 1rem;
     font-size: 1.2rem;
     text-align: center;
-`;
+`
+
+export const ErrorH1 = styled.h1`
+    color: #202020;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 32px;
+
+    @media screen and (min-width: 480px){
+        font-size: 40px;
+    }
+
+    // if screen is desktop size
+    @media screen and (min-width: 768px){
+        font-size: 48px;
+    }
+
+`
