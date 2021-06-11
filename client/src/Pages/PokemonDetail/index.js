@@ -58,9 +58,7 @@ export default function PokemonDetail() {
     const classes = useStyles();
     const dispatch = useDispatch()
     const location = useLocation()
-
     const pokemon = typeof (location.state) !== 'undefined' ? location.state.pokemon : { name: "" }
-    const owned = typeof (location.state) !== 'undefined' ? location.state.owned : 0
     const [selectedPokemon, setSelectedPokemon] = useState(null)
     const [open, setOpen] = useState(false)
     const [open2nd, setOpen2nd] = useState(false)
@@ -88,7 +86,7 @@ export default function PokemonDetail() {
         return () => {
 
         }
-    }, [data]);
+    }, [data, loading, error]);
 
     if (typeof (location.state) === 'undefined') {
         history.push("/");
@@ -179,7 +177,7 @@ export default function PokemonDetail() {
             if (selected !== null) {
                 return (
                     <PokemonContainer>
-                        <PokemonH1>My Bag</PokemonH1>
+                        <PokemonH1>Owned {selectedPokemon.name}</PokemonH1>
                         <PokemonWrapper>
                             {selected.pokeList.map((item, index) => {
                                 return (
@@ -192,7 +190,7 @@ export default function PokemonDetail() {
             } else {
                 return (
                     <MoveContainer>
-                        <MoveH1>My Bag</MoveH1>
+                        <MoveH1>Owned {selectedPokemon.name}</MoveH1>
                         <MoveCardWrapper>
                             <MoveCard >
                                 <MoveH2 style={{ color: 'white', textDecoration: 'none' }}>Empty</MoveH2>
@@ -398,7 +396,7 @@ export default function PokemonDetail() {
         )
     }
     else {
-        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} alt="pika_meme_loading" /></RotatingLoading></RotatingLoadingContainer>);
     }
 
 }

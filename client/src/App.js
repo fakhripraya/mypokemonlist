@@ -34,7 +34,7 @@ const client = new ApolloClient({
 
 const history = createBrowserHistory();
 
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router history={history}>
@@ -48,5 +48,3 @@ function App() {
     </ApolloProvider>
   );
 }
-
-export default App;

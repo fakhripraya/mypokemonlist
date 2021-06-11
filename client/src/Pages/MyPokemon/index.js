@@ -10,11 +10,9 @@ import {
     PokemonH2,
     PokemonP,
 } from './MyPokemonElements';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function MyPokemon() {
-
-    const dispatch = useDispatch();
 
     function PokemonList() {
 
@@ -29,7 +27,6 @@ export default function MyPokemon() {
                         pathname: "/detail",
                         state: {
                             pokemon: pokemon.pokemon,
-                            owned: pokemon.owned,
                         },
                     }}>
                         <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={pokemon.img} alt={pokemon.pokemon.name} />
@@ -44,7 +41,7 @@ export default function MyPokemon() {
             <Fragment>
                 <PokemonContainer>
                     <PokemonH1>My Pokemon List</PokemonH1>
-                    <PokemonH2Cont>Gotta catch ’em all</PokemonH2Cont>
+                    <PokemonH2Cont>Select your favorite pokemon</PokemonH2Cont>
                     <PokemonWrapper>
                         {myPokemons.map((item, index) => {
                             return (

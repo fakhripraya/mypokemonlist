@@ -40,10 +40,10 @@ export default function Pokemon() {
         return () => {
 
         }
-    }, [data]);
+    }, [data, loading, error]);
 
     if (loading)
-        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
 
     if (error) return `Error! ${error.message}`;
 
@@ -54,7 +54,7 @@ export default function Pokemon() {
 
         function LoadingMore() {
             return (
-                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
+                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
             );
         }
 
@@ -76,7 +76,6 @@ export default function Pokemon() {
                         pathname: "/detail",
                         state: {
                             pokemon: pokemon,
-                            owned: owned,
                         },
                     }}>
                         <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={pokemon.image} alt={pokemon.name} />
@@ -91,7 +90,7 @@ export default function Pokemon() {
             <Fragment>
                 <PokemonContainer>
                     <PokemonH1>Pokemon List</PokemonH1>
-                    <PokemonH2Cont>Select your favorite pokemon</PokemonH2Cont>
+                    <PokemonH2Cont>Gotta catch ’em all</PokemonH2Cont>
                     <PokemonWrapper>
                         {pokemons.map((item, index) => {
                             return (
@@ -106,12 +105,18 @@ export default function Pokemon() {
                             <PokemonButton onClick={async () => {
 
                                 setIsLoadingMore(true);
-                                const { loading, error, data } = await fetchMore({
+                                const { error, data } = await fetchMore({
                                     variables: {
                                         offset: offset + offsetNext,
                                         limit: 18,
                                     },
                                 });
+
+                                if (error) {
+                                    alert('error: fetching data failed')
+                                    return;
+                                }
+
                                 setIsLoadingMore(false);
                                 setOffsetsNext(offsetNext + 18)
 
