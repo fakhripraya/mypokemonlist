@@ -116,7 +116,7 @@ export default function Pokemon() {
                                 setPokemons(newArray)
                             }}>
                                 <h1 style={{ color: 'white', fontSize: 18 }}>
-                                    Load More
+                                    Load More !!
                                 </h1>
                             </PokemonButton>
                         ))
