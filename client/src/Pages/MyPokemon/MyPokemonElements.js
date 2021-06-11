@@ -70,6 +70,7 @@ export const PokemonCard = styled(Link)`
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
     border-radius: 10px;
+    text-decoration: none;
     
     &:hover{
         transform: scale(1.02);
