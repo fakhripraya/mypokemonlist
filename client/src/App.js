@@ -40,9 +40,9 @@ export default function App() {
       <Router history={history}>
         <Navbar />
         <Switch>
-          <Route path='/' exact component={Pokemon} />
-          <Route path='/me' exact component={MyPokemon} />
-          <Route path='/detail' exact component={PokemonDetail} />
+          <Route path='mypokemonlist/' exact component={Pokemon} />
+          <Route path='mypokemonlist/me' exact component={MyPokemon} />
+          <Route path='mypokemonlist/detail' exact component={PokemonDetail} />
         </Switch>
       </Router>
     </ApolloProvider>
