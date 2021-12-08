@@ -1,6 +1,21 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
+export const Background = styled.img`
+    /* Set rules to fill background */
+    min-height: 50%;
+    min-width: 1024px;
+        
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -999;
+`
+
 export const HeroWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -45,12 +60,12 @@ export const HeroIcon = styled.img`
 `
 
 export const HeroH1 = styled.h1`
-    color: #202020;
+    color: #fff;
     font-weight: bold;
     text-align: center;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     font-size: 32px;
     text-align: center;
 
@@ -67,7 +82,7 @@ export const HeroH1 = styled.h1`
 
 export const HeroP = styled.p`
     margin-bottom: 10px;
-    color: #202020;
+    color: #fff;
     text-align: center;
     justify-content: center;
     max-width: 600px;
@@ -89,7 +104,7 @@ export const HeroButton = styled.button`
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: rgba(30,30,30,0.9);
+    background-color: #2F3136;
     border-radius: 10px;
 
     &:hover{
@@ -190,7 +205,7 @@ export const MoveCardWrapper = styled.div`
 `
 
 export const MoveCard = styled.div`
-    background-color: #D53B47;
+    background-color: #2F3136;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,7 +230,7 @@ export const MoveCard = styled.div`
 
 export const MoveH1 = styled.h1`
     font-size: 2rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 25px;
     text-align: center;
     
@@ -248,7 +263,7 @@ export const ModalImage = styled.img`
 `
 
 export const ModalTitle = styled.h1`
-    color: #000;
+    color: #fff;
     font-size: 0.75rem;
     margin-bottom: 25px;
     text-align: center;
@@ -312,7 +327,7 @@ export const ModalCloseButton = styled.button`
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: rgba(30,30,30,0.9);
+    background-color: #2F3136;
     border-radius: 10px;
 
     &:hover{
@@ -394,12 +409,12 @@ export const PokemonCardWrapper = styled.div`
 `
 
 export const PokemonCard = styled.div`
-    background-color: #D53B47;
+    background-color: #2F3136;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: auto;
     width: 150px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -419,14 +434,14 @@ export const PokemonCard = styled.div`
 `
 
 export const PokemonIcon = styled.img`
-    height: 50%;
-    width: 75%;
-    margin-bottom: 10px;
+    height: 20%;
+    width: 20%;
+    margin-top: 100px;
 `
 
 export const PokemonH1 = styled.h1`
     font-size: 2rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 10px;
     text-align: center;
     
@@ -454,7 +469,7 @@ export const PokemonButton = styled.button`
     width: 60%;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(30,30,30,0.9);
+    background-color: #1e1e1e;
     border-radius: 10px;
 
     &:hover{
@@ -493,7 +508,7 @@ export const RotatingLoading = styled.div`
 `
 
 export const ErrorH1 = styled.h1`
-    color: #202020;
+    color: #fff;
     font-weight: bold;
     text-align: center;
     justify-content: center;

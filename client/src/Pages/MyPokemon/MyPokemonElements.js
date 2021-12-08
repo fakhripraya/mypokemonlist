@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom'
 
 /*Pokemon SECTION*/
 
+export const Background = styled.img`
+    /* Set rules to fill background */
+    min-height: 50%;
+    min-width: 1024px;
+        
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: 100%;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -999;
+`
+
 export const FAButton = styled.div`
     position: fixed;
     display: ${({ showfa }) => (showfa ? 'flex' : 'none')};
@@ -68,12 +83,12 @@ export const PokemonCardWrapper = styled.div`
 `
 
 export const PokemonCard = styled(Link)`
-    background-color: #D53B47;
+    background-color: #2F3136;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: auto;
     width: 150px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -94,14 +109,14 @@ export const PokemonCard = styled(Link)`
 `
 
 export const PokemonIcon = styled.img`
-    height: 50%;
+    height: 75%;
     width: 75%;
     margin-bottom: 10px;
 `
 
 export const PokemonH1 = styled.h1`
     font-size: 2rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 10px;
     text-align: center;
     
@@ -111,6 +126,7 @@ export const PokemonH1 = styled.h1`
 `
 
 export const PokemonH2Cont = styled.h2`
+    color: #fff;
     font-size: 1rem;
     margin-bottom: 64px;
     text-align: center;

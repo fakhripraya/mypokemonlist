@@ -9,11 +9,19 @@ import {
     PokemonH2Cont,
     PokemonH2,
     PokemonP,
-    FAButton
+    FAButton,
+    Background
 } from './MyPokemonElements';
 import Fab from '@material-ui/core/Fab';
 import { useSelector } from 'react-redux';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import Hape1 from '../../Assets/Images/hape1.png';
+import Hape2 from '../../Assets/Images/hape2.png';
+import Hape3 from '../../Assets/Images/hape3.png';
+import Hape4 from '../../Assets/Images/hape4.png';
+import Hape5 from '../../Assets/Images/hape5.png';
+import Hape6 from '../../Assets/Images/hape6.png';
+import HapeBG from '../../Assets/Images/my_hapelist_bg.png';
 
 export default function MyPokemon() {
 
@@ -34,6 +42,23 @@ export default function MyPokemon() {
         // get all my pokemon information
         let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons);
 
+        function HapeImage({ name }) {
+
+            if (name === "Shujin hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape1} alt={name} />
+            } else if (name === "Shinju hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape2} alt={name} />
+            } else if (name === "Kojin hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape3} alt={name} />
+            } else if (name === "Jojo hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape5} alt={name} />
+            } else if (name === "Digimental hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape4} alt={name} />
+            } else {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape6} alt={name} />
+            }
+        }
+
         function GetOwnedPokemon({ pokemon, index }) {
 
             return (
@@ -44,7 +69,8 @@ export default function MyPokemon() {
                             pokemon: pokemon.pokemon,
                         },
                     }}>
-                        <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={pokemon.img} alt={pokemon.pokemon.name} />
+                        <HapeImage name={pokemon.pokemon.name} />
+                        {/* <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={pokemon.img} alt={pokemon.pokemon.name} /> */}
                         <PokemonH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon.pokemon.name !== null ? pokemon.pokemon.name.toUpperCase() : ""}</PokemonH2>
                         <PokemonP style={{ color: 'white', textDecoration: 'none' }}>Owned: {pokemon.owned}</PokemonP>
                     </PokemonCard>
@@ -62,8 +88,8 @@ export default function MyPokemon() {
                     </Fab>
                 </FAButton>
                 <PokemonContainer>
-                    <PokemonH1>My Pokemon List</PokemonH1>
-                    <PokemonH2Cont>Select your favorite pokemon</PokemonH2Cont>
+                    <PokemonH1>My Hapebeast</PokemonH1>
+                    <PokemonH2Cont>Select your favorite Hapebeast</PokemonH2Cont>
                     <PokemonWrapper>
                         {myPokemons.map((item, index) => {
                             return (
@@ -79,6 +105,7 @@ export default function MyPokemon() {
     return (
         <Fragment>
             <PokemonList />
+            <Background src={HapeBG} alt="my_pokemon_bg" />
         </Fragment>
     )
 }

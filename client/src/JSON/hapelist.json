@@ -1,0 +1,32 @@
+[
+    {
+        "image":"/assets/images/hape1.png",
+        "name":"Shujin hape",
+        "__typename":"hapeItem"
+    },
+    {
+        "image":"/assets/images/hape2.png",
+        "name":"Shinju hape",
+        "__typename":"hapeItem"
+    },
+    {
+        "image":"/assets/images/hape3.png",
+        "name":"Kojin hape",
+        "__typename":"hapeItem"
+    },
+    {
+        "image":"/assets/images/hape5.png",
+        "name":"Jojo hape",
+        "__typename":"hapeItem"
+    },
+    {
+        "image":"/assets/images/hape4.png",
+        "name":"Digimental hape",
+        "__typename":"hapeItem"
+    },
+    {
+        "image":"/assets/images/hape6.png",
+        "name":"Modera hape",
+        "__typename":"hapeItem"
+    }
+]

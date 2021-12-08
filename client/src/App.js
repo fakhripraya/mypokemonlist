@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import Pokemon from './Pages/Pokemon';
 import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 import MyPokemon from './Pages/MyPokemon';
 import { createBrowserHistory } from 'history';
 import PokemonDetail from './Pages/PokemonDetail';
@@ -44,6 +45,7 @@ export default function App() {
           <Route path='/me' exact component={MyPokemon} />
           <Route path='/detail' exact component={PokemonDetail} />
         </Switch>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

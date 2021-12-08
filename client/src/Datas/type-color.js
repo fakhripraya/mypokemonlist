@@ -79,4 +79,16 @@ export const TypeColors = [
         title: 'shadow',
         color: '#705898',
     },
+    {
+        title: 'alpha',
+        color: 'rgb(255, 105, 50)',
+    },
+    {
+        title: 'primal',
+        color: 'rgb(255, 255, 255)',
+    },
+    {
+        title: 'moderator',
+        color: 'rgb(52, 152, 219)',
+    },
 ];

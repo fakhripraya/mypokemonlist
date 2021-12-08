@@ -29,6 +29,7 @@ import {
     PokemonButton,
     RotatingLoadingContainer,
     RotatingLoading,
+    Background,
     ErrorH1
 } from './PokemonDetailElement';
 import { useQuery } from '@apollo/client';
@@ -47,6 +48,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GET_POKEMON_DETAILS } from '../../GraphQL/Queries';
 import React, { useEffect, useState, useRef, Fragment } from 'react';
 import { getOwnedFromArray, getTypeColorFromArray } from '../../Function/array';
+import hapelist_data from '../../JSON/hape_detail.json';
+import Hape1 from '../../Assets/Images/hape1.png';
+import Hape2 from '../../Assets/Images/hape2.png';
+import Hape3 from '../../Assets/Images/hape3.png';
+import Hape4 from '../../Assets/Images/hape4.png';
+import Hape5 from '../../Assets/Images/hape5.png';
+import Hape6 from '../../Assets/Images/hape6.png';
+import HapeBG from '../../Assets/Images/hapelist_bg.png';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -73,26 +82,44 @@ export default function PokemonDetail() {
 
     let myPokemons = useSelector(state => state.MyPokemonReducer.myPokemons)
 
-    const { loading, error, data } = useQuery(GET_POKEMON_DETAILS, {
-        variables: {
-            name: pokemon.name
-        }
-    });
+    // const { loading, error, data } = useQuery(GET_POKEMON_DETAILS, {
+    //     variables: {
+    //         name: pokemon.name
+    //     }
+    // });
+
+    // useEffect(() => {
+
+    //     if (!loading && !error) {
+    //         console.log("yey")
+    //         console.log(data.pokemon)
+    //         setSelectedPokemon(data.pokemon)
+    //     }
+
+    // }, [data, loading, error]);
 
     useEffect(() => {
 
-        if (!loading && !error) {
-            setSelectedPokemon(data.pokemon)
-        }
+        hapelist_data.forEach((item, index) => {
+            if (item.name === pokemon.name) {
+                setSelectedPokemon(item)
+            }
+        })
 
-    }, [data, loading, error]);
+        // if (!loading && !error) {
+        // console.log("yey")
+        // console.log(data.pokemon)
+        // setSelectedPokemon(data.pokemon)
+        // }
+
+    }, []);
 
     if (typeof (location.state) === 'undefined') {
         history.push("/");
     }
 
-    if (!loading && !error && selectedPokemon !== null) {
-
+    // if (!loading && !error && selectedPokemon !== null) {
+    if (selectedPokemon !== null) {
         let selected = null;
 
         myPokemons.forEach((item) => {
@@ -100,6 +127,40 @@ export default function PokemonDetail() {
                 selected = item;
             }
         })
+
+        function HapeImage({ name }) {
+
+            if (name === "Shujin hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape1} alt={pokemon.name} />
+            } else if (name === "Shinju hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape2} alt={pokemon.name} />
+            } else if (name === "Kojin hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape3} alt={pokemon.name} />
+            } else if (name === "Jojo hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape5} alt={pokemon.name} />
+            } else if (name === "Digimental hape") {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape4} alt={pokemon.name} />
+            } else {
+                return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape6} alt={pokemon.name} />
+            }
+        }
+
+        function HapeImageOwned({ name }) {
+
+            if (name === "Shujin hape") {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape1} alt={pokemon.name} />
+            } else if (name === "Shinju hape") {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape2} alt={pokemon.name} />
+            } else if (name === "Kojin hape") {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape3} alt={pokemon.name} />
+            } else if (name === "Jojo hape") {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape5} alt={pokemon.name} />
+            } else if (name === "Digimental hape") {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape4} alt={pokemon.name} />
+            } else {
+                return <PokemonIcon style={{ marginTop: 0, height: '75%', width: '75%', borderRadius: '50%', backgroundColor: 'white' }} src={Hape6} alt={pokemon.name} />
+            }
+        }
 
         function GetMoves({ move, index }) {
 
@@ -114,12 +175,13 @@ export default function PokemonDetail() {
 
         function ShowMyBag() {
 
-            function GetMyPokemons({ pokemon, index }) {
+            function GetMyPokemons({ pokemonName, pokemon, index }) {
 
                 return (
                     <PokemonCardWrapper key={index}>
                         <PokemonCard >
-                            <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
+                            {/* <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} /> */}
+                            <HapeImageOwned name={pokemonName} />
                             <PokemonH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon !== null ? pokemon.toUpperCase() : ""}</PokemonH2>
                             <PokemonButton onClick={() => {
 
@@ -179,7 +241,7 @@ export default function PokemonDetail() {
                         <PokemonWrapper>
                             {selected.pokeList.map((item, index) => {
                                 return (
-                                    <GetMyPokemons pokemon={item} index={index} key={index} />
+                                    <GetMyPokemons pokemonName={selectedPokemon.name} pokemon={item} index={index} key={index} />
                                 )
                             })}
                         </PokemonWrapper>
@@ -207,7 +269,7 @@ export default function PokemonDetail() {
             return (
                 <MoveCardWrapper key={index}>
                     <MoveCard style={{ backgroundColor: colorHex }} >
-                        <MoveH2 style={{ color: 'white', textDecoration: 'none' }}>{type.type.name !== null ? type.type.name.toUpperCase() : ""}</MoveH2>
+                        <MoveH2 style={{ color: type.type.name === "primal" ? 'black' : 'white', textDecoration: 'none' }}>{type.type.name !== null ? type.type.name.toUpperCase() : ""}</MoveH2>
                     </MoveCard>
                 </MoveCardWrapper>
             )
@@ -221,7 +283,7 @@ export default function PokemonDetail() {
                 if (catchPoke.showInput === true) {
                     return (
                         <Fragment>
-                            <ModalInput ref={textRef} type="text" id="name" name="name" placeholder="Your Pokemon name.." />
+                            <ModalInput ref={textRef} type="text" id="name" name="name" placeholder="Your Hapebeast name.." />
                             <div className={classes.root}>
                                 <Collapse in={open2nd}>
                                     <Alert
@@ -327,7 +389,8 @@ export default function PokemonDetail() {
                 <HeroWrapper>
                     <HeroBgWrapper />
                     <HeroContent>
-                        <HeroIcon alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} />
+                        {/* <HeroIcon alt={selectedPokemon.name} src={selectedPokemon.sprites.front_default} /> */}
+                        <HapeImage name={pokemon.name} />
                         <HeroH1>{selectedPokemon.name.toUpperCase()}</HeroH1>
                         <TypeWrapper>
                             {selectedPokemon.types.map((item, index) => {
@@ -342,7 +405,7 @@ export default function PokemonDetail() {
                             if (Math.random() > 0.5) {
                                 setCatchPoke({
                                     name: "Successfully catch " + selectedPokemon.name + "!",
-                                    quote: "Give your poke-poke a nickname boi!",
+                                    quote: "Give your Hape a nickname boi!",
                                     img: "https://pokemon-web-app.web.app/static/media/gotcha.e52aa4c3.png",
                                     showInput: true
                                 })
@@ -361,7 +424,7 @@ export default function PokemonDetail() {
                         }}>
                             <h1 style={{ color: 'white', fontSize: 18 }}>
                                 Catch
-                        </h1>
+                            </h1>
                         </HeroButton>
                     </HeroContent>
                 </HeroWrapper>
@@ -377,12 +440,13 @@ export default function PokemonDetail() {
                     </MoveWrapper>
                 </MoveContainer>
                 <Modal open={open} setOpen={setOpen} Body={ModalBody} />
+                <Background src={HapeBG} alt="pokemon_detail_bg" />
             </Fragment >
         )
     }
-    else if (error) {
-        return (<ErrorH1>Error! {error.message}</ErrorH1>)
-    }
+    // else if (error) {
+    //     return (<ErrorH1>Error! {error.message}</ErrorH1>)
+    // }
     else {
         return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} src={Pikachu} alt="pika_meme_loading" /></RotatingLoading></RotatingLoadingContainer>);
     }

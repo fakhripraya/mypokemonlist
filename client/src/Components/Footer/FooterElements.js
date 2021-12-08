@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
     background: #1E1E1E;
-    height: 80px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-size: 1rem;
     position: sticky;
-    top: 0;
+    margin-top: 150px;
     z-index: 10;
     border-bottom: solid 1.1px rgba(0,0,0,0.3);
 
@@ -58,16 +58,12 @@ export const MobileIcon = styled.div`
 `
 
 export const NavMenu = styled.ul`
-    display: none;
-
-    @media screen and (min-width: 1260px){
         display: flex;
         align-items: center;
         list-style: none;
         text-align: center;
         justify-content: center;
         padding: 0px;
-    }
 `
 
 export const NavItem = styled.li`

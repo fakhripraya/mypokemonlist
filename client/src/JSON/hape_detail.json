@@ -1,0 +1,272 @@
+[
+    {
+        "id": 1,
+        "image":"/assets/images/hape1.png",
+        "name":"Shujin hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"head-butt",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"kick",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"punch",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"terror",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"dance",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"fighting",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    },
+    {
+        "id": 2,
+        "image":"/assets/images/hape2.png",
+        "name":"Shinju hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"head-butt",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"kick",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"stomp",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"roar",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"taunt",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"fighting",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    },
+    {
+        "id": 3,
+        "image":"/assets/images/hape3.png",
+        "name":"Kojin hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"karate-chop",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"karate-kick",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"stomp",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"terror",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"roar",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"speed-up",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"evasion-buff",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"dark",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    },
+    {
+        "id": 4,
+        "image":"/assets/images/hape5.png",
+        "name":"Jojo hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"zoom-punch",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"sendo-ripple-overdrive",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"scarlet-overdrive",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"overdrive-barrage",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            },
+            {
+                "move":{
+                    "name":"metal-silver-overdrive",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"alpha",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    },
+    {
+        "id": 5,
+        "image":"/assets/images/hape4.png",
+        "name":"Digimental hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"mighty-ban-hammer ( insta kill even mod )",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"primal",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    },
+    {
+        "id": 6,
+        "image":"/assets/images/hape6.png",
+        "name":"Modera hape",
+        "moves": [
+            {
+                "move":{
+                    "name":"ban-hammer ( insta kill )",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Move"
+            }
+        ],
+        "types": [
+            {
+                "type":{
+                    "name":"moderator",
+                    "__typename":"BaseName"
+                },
+                "__typename": "Type"
+            }
+        ],
+        "__typename":"hape"
+    }
+]

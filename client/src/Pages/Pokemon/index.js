@@ -13,37 +13,56 @@ import {
     RotatingLoadingContainer,
     RotatingLoading,
     ErrorH1,
+    Background,
     FAButton
 } from './PokemonElements';
 import Fab from '@material-ui/core/Fab';
 import { useSelector } from 'react-redux';
-import { useQuery } from '@apollo/client';
-import { GET_POKEMONS } from '../../GraphQL/Queries';
+// import { useQuery } from '@apollo/client';
+// import { GET_POKEMONS } from '../../GraphQL/Queries';
 import Pikachu from '../../Assets/Images/wkwkwk.png';
 import { getOwnedFromArray } from '../../Function/array';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import hapelist_data from '../../JSON/hapelist.json';
+import Hape1 from '../../Assets/Images/hape1.png';
+import Hape2 from '../../Assets/Images/hape2.png';
+import Hape3 from '../../Assets/Images/hape3.png';
+import Hape4 from '../../Assets/Images/hape4.png';
+import Hape5 from '../../Assets/Images/hape5.png';
+import Hape6 from '../../Assets/Images/hape6.png';
+import HapeBG from '../../Assets/Images/hapelist_bg.png';
+
 
 export default function Pokemon() {
 
     const offset = 0;
     let [pokemons, setPokemons] = useState([]);
-    const [offsetNext, setOffsetsNext] = useState(18);
-    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    // const [offsetNext, setOffsetsNext] = useState(18);
+    // const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [FADisplay, setFADisplay] = useState(false);
 
-    const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
-        variables: {
-            offset: offset,
-            limit: 18
-        }
-    });
+    // const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
+    //     variables: {
+    //         offset: offset,
+    //         limit: 18
+    //     }
+    // });
+
+    // useEffect(() => {
+
+    //     console.log(data.pokemons.results)
+
+    //     if (!loading && !error)
+    //         setPokemons(data.pokemons.results);
+
+    // }, [data, loading, error]);
 
     useEffect(() => {
 
-        if (!loading && !error)
-            setPokemons(data.pokemons.results);
+        // if (!loading && !error)
+        setPokemons(hapelist_data);
 
-    }, [data, loading, error]);
+    }, []);
 
     const showFAButton = () => {
         if (window.scrollY >= window.innerHeight) {
@@ -55,10 +74,10 @@ export default function Pokemon() {
 
     window.addEventListener('scroll', showFAButton);
 
-    if (loading)
-        return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>);
+    // if (loading)
+    //     return (<RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Hape1} /></RotatingLoading></RotatingLoadingContainer>);
 
-    if (error) return (<ErrorH1>Error! { error.message}</ErrorH1>);
+    // if (error) return (<ErrorH1>Error! {error.message}</ErrorH1>);
 
     function PokemonList() {
 
@@ -67,13 +86,30 @@ export default function Pokemon() {
 
         function LoadingMore() {
             return (
-                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Pikachu} /></RotatingLoading></RotatingLoadingContainer>
+                <RotatingLoadingContainer><RotatingLoading><img style={{ height: '150px', width: '150px' }} alt="pika_meme_loading" src={Hape1} /></RotatingLoading></RotatingLoadingContainer>
             );
         }
 
         function GetOwnedPokemon({ pokemon, index }) {
 
             let owned = getOwnedFromArray(myPokemons, pokemon);
+
+            function HapeImage({ name }) {
+
+                if (name === "Shujin hape") {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape1} alt={pokemon.name} />
+                } else if (name === "Shinju hape") {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape2} alt={pokemon.name} />
+                } else if (name === "Kojin hape") {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape3} alt={pokemon.name} />
+                } else if (name === "Jojo hape") {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape5} alt={pokemon.name} />
+                } else if (name === "Digimental hape") {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape4} alt={pokemon.name} />
+                } else {
+                    return <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape6} alt={pokemon.name} />
+                }
+            }
 
             return (
                 <PokemonCardWrapper key={index}>
@@ -83,7 +119,8 @@ export default function Pokemon() {
                             pokemon: pokemon,
                         },
                     }}>
-                        <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={pokemon.image} alt={pokemon.name} />
+                        <HapeImage name={pokemon.name} />
+                        {/* <PokemonIcon style={{ borderRadius: '50%', backgroundColor: 'white' }} src={Hape1} alt={pokemon.name} /> */}
                         <PokemonH2 style={{ color: 'white', textDecoration: 'none' }}>{pokemon.name !== null ? pokemon.name.toUpperCase() : ""}</PokemonH2>
                         <PokemonP style={{ color: 'white', textDecoration: 'none' }}>Owned: {owned}</PokemonP>
                     </PokemonCard>
@@ -101,8 +138,8 @@ export default function Pokemon() {
                     </Fab>
                 </FAButton>
                 <PokemonContainer>
-                    <PokemonH1>Pokemon List</PokemonH1>
-                    <PokemonH2Cont>Gotta catch ’em all</PokemonH2Cont>
+                    <PokemonH1>Hapebeast Collection</PokemonH1>
+                    <PokemonH2Cont>Catch your freakin Hape</PokemonH2Cont>
                     <PokemonWrapper>
                         {pokemons.map((item, index) => {
                             return (
@@ -110,7 +147,7 @@ export default function Pokemon() {
                             )
                         })}
                     </PokemonWrapper>
-                    {
+                    {/* {
                         (isLoadingMore ? (
                             <LoadingMore />
                         ) : (
@@ -141,7 +178,7 @@ export default function Pokemon() {
                                 </h1>
                             </PokemonButton>
                         ))
-                    }
+                    } */}
                 </PokemonContainer>
             </Fragment>
         )
@@ -150,6 +187,7 @@ export default function Pokemon() {
     return (
         <Fragment>
             <PokemonList />
+            <Background src={HapeBG} alt="pokemon_list_bg" />
         </Fragment>
     )
 }
